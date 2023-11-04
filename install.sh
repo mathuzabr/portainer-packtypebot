@@ -154,7 +154,11 @@ services:
       - "traefik.http.routers.http-catchall.middlewares=redirect-to-https"
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
       - "traefik.http.routers.traefik-dashboard.rule=Host(\`$traefik\`)"
-      # ... (other traefik labels)
+      - "traefik.http.routers.traefik-dashboard.entrypoints=websecure"
+      - "traefik.http.routers.traefik-dashboard.service=api@internal"
+      - "traefik.http.routers.traefik-dashboard.tls.certresolver=leresolver"
+      - "traefik.http.middlewares.traefik-auth.basicauth.users=$senha"
+      - "traefik.http.routers.traefik-dashboard.middlewares=traefik-auth"
 
   portainer:
     image: portainer/portainer-ce:latest
@@ -171,7 +175,10 @@ services:
       - "traefik.http.routers.frontend.service=frontend"
       - "traefik.http.routers.frontend.tls.certresolver=leresolver"
       - "traefik.http.routers.edge.rule=Host(\`$edge\`)"
-      # ... (other edge labels)
+      - "traefik.http.routers.edge.entrypoints=websecure"
+      - "traefik.http.services.edge.loadbalancer.server.port=8000"
+      - "traefik.http.routers.edge.service=edge"
+      - "traefik.http.routers.edge.tls.certresolver=leresolver"
 volumes:
   portainer_data:
 EOL
