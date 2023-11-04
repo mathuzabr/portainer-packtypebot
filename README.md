@@ -28,38 +28,38 @@ sudo apt update && sudo apt install -y git && git clone https://github.com/mathu
 > Convido você a conhecer nosso pack com vários modelos de fluxo de automação usando Typebot
 [clicando aqui](https://app.afcode.com.br/packtypebot)
 
-✅ Instalação do Typebot na sua VPS (Via Docker)
-✅ Área de Membros
-✅ Atualizações frequentes
-✅ Acesso Vitalício 
-✅ Grupo de Network
-✅ Template Website Typebot (HTML5, CSS e JS)
-💻 Painel Administrativo 3.0
-🗃️ Arquivos para montar sua própria API
-🎰 Funil Para Casa Lotérica (Com Resultado em tempo Real)
-🍔 Funil Para Delivery (Com Calculadora de Itens)
-🏠 Funil Para Imobiliária (Atendimento por IA)
-🚗 Funil Para Loja de Veículos (Com consulta tabela FIPE)
-🍰 Funil Para Doceria (Com Calculadora de Itens)
-💈 Funil Para Barbearia (Com sistema de Agendamento)
-🦷 Funil Para Clínica Dentaria (Atendimento por IA)
-💆 Funil Para Clínica de Estética
-💼 Funil de Consultas de Dados (CNPJ, CEP, CORREIOS e muito mais...)
-📶 Funil Para Provedor de internet
-🏋️ Funil Para Academia
-⚖️ Funil Para Advocacia
-📺 Funil Para IPTV
-🎰 Funil Para IGAME
-🤖 Funil ChatGPT
-📦 Pacote com +200 Funis para estudo
-🎥 Incluído Vídeo Aulas
-e muito mais...
+<p>✅ Instalação do Typebot na sua VPS (Via Docker)</p>
+<p>✅ Área de Membros</p>
+<p>✅ Atualizações frequentes</p>
+<p>✅ Acesso Vitalício </p>
+<p>✅ Grupo de Network</p>
+<p>✅ Template Website Typebot (HTML5, CSS e JS)</p>
+<p>💻 Painel Administrativo 3.0</p>
+<p>🗃️ Arquivos para montar sua própria API</p>
+<p>🎰 Funil Para Casa Lotérica (Com Resultado em tempo Real)</p>
+<p>🍔 Funil Para Delivery (Com Calculadora de Itens)</p>
+<p>🏠 Funil Para Imobiliária (Atendimento por IA)</p>
+<p>🚗 Funil Para Loja de Veículos (Com consulta tabela FIPE)</p>
+<p>🍰 Funil Para Doceria (Com Calculadora de Itens)</p>
+<p>💈 Funil Para Barbearia (Com sistema de Agendamento)</p>
+<p>🦷 Funil Para Clínica Dentaria (Atendimento por IA)</p>
+<p>💆 Funil Para Clínica de Estética</p>
+<p>💼 Funil de Consultas de Dados (CNPJ, CEP, CORREIOS e muito mais...)</p>
+<p>📶 Funil Para Provedor de internet</p>
+<p>🏋️ Funil Para Academia</p>
+<p>⚖️ Funil Para Advocacia</p>
+<p>📺 Funil Para IPTV</p>
+<p>🎰 Funil Para IGAME</p>
+<p>🤖 Funil ChatGPT</p>
+<p>📦 Pacote com +200 Funis para estudo</p>
+<p>🎥 Incluído Vídeo Aulas</p>
+<p>e muito mais...</p>
 
-Você também pode usar nosso pack usando a versão Free do Typebot
-https://typebot.io
+<p>Você também pode usar nosso pack usando a versão Free do Typebot</p>
+<p>https://typebot.io</p>
 
-🛒 COMPRE AGORA!
-https://seguro.afcode.store/r/INQ0WFFVL4
+<p>🛒 COMPRE AGORA!</p>
+<p>https://seguro.afcode.store/r/INQ0WFFVL4</p>
 
-Dúvidas e Suporte:
-https://app.afcode.com.br/suporte
+<p>Dúvidas e Suporte:</p>
+<p>https://app.afcode.com.br/suporte</p>
