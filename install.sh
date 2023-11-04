@@ -98,8 +98,12 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 
 sudo sh get-docker.sh
 
+sleep 3
+
 mkdir Portainer
 cd Portainer
+
+sleep 3
 
 touch acme.json
 
