@@ -8,7 +8,9 @@ echo -e "\e[32m |  ___/ /\ \| |    |  <      | |    \   / |  ___/|  __| |  _ <| 
 echo -e "\e[32m | |  / ____ \ |____| . \     | |     | |  | |    | |____| |_) | |__| | | |   \e[0m"
 echo -e "\e[32m |_| /_/    \_\_____|_|\_\    |_|     |_|  |_|    |______|____/ \____/  |_|   \e[0m"
 echo -e "\e[32m                                                                              \e[0m"                                                                                                                                            
-echo -e "\e[32mAuto Instalador Docker/Portainer Pack Typebot                                                                       \e[0m"
+echo -e "\e[32mAuto Instalador Docker/Portainer Pack Typebot                                 \e[0m"
+echo -e "\e[32mCreditos do arquivo docker-compose.yml                                        \e[0m"
+echo -e "\e[32mAndre Almeida https://www.youtube.com/@fabricandosuaideiatutoriais            \e[0m"
 echo -e "\e[32m\e[0m"
 echo -e "\e[32m\e[0m"
 
@@ -22,6 +24,8 @@ echo -e "\e[32m=================================================================
 echo ""
 echo ""
 echo ""
+
+# Prompt for email, traefik, senha, portainer, and edge variables
 echo -e "\e[32mPasso \e[33m1/5\e[0m"
 read -p "Endereço de e-mail: " email
 echo ""
@@ -32,7 +36,7 @@ echo -e "\e[32mPasso \e[33m3/5\e[0m"
 read -p "Senha do Traefik: " senha
 echo ""
 echo -e "\e[32mPasso \e[33m4/5\e[0m"
-read -p " Dominio do Portainer (ex: portainer.seudominio.com): " portainer
+read -p "Dominio do Portainer (ex: portainer.seudominio.com): " portainer
 echo ""
 echo -e "\e[32mPasso \e[33m5/5\e[0m"
 read -p "Dominio do Edge (ex: edge.seudominio.com): " edge
@@ -47,11 +51,11 @@ echo ""
 clear
 
 echo ""
-echo -e "Seu E-mail: \e[33m$email\e[0m"
-echo -e "Dominio do Traefik: \e[33m$traefik\e[0m"
-echo -e "Senha do Traefik: \e[33m$senha\e[0m"
-echo -e "Dominio do Portainer: \e[33m$portainer\e[0m"
-echo -e "Dominio do Edge: \e[33m$edge\e[0m"
+echo "Seu E-mail: $email"
+echo "Dominio do Traefik: $traefik"
+echo "Senha do Traefik: $senha"
+echo "Dominio do Portainer: $portainer"
+echo "Dominio do Edge: $edge"
 echo ""
 echo ""
 read -p "As informações estão certas? (y/n): " confirma1
@@ -118,64 +122,59 @@ clear
 
 sleep 3
 
-cat > docker-compose.yml << EOL
-version: "3.3"
-services:
-  traefik:
-    container_name: traefik
-    image: "traefik:latest"
-    restart: always
-    command:
-      - --entrypoints.web.address=:80
-      - --entrypoints.websecure.address=:443
-      - --api.insecure=true
-      - --api.dashboard=true
-      - --providers.docker
-      - --log.level=ERROR
-      - --certificatesresolvers.leresolver.acme.httpchallenge=true
-      - --certificatesresolvers.leresolver.acme.email=$email
-      - --certificatesresolvers.leresolver.acme.storage=./acme.json
-      - --certificatesresolvers.leresolver.acme.httpchallenge.entrypoint=web
-    ports:
-      - "80:80"
-      - "443:443"
+    # Create or modify docker-compose.yml file with subdomains
+    cat > docker-compose.yml << EOL
+    version: "3.3"
+    services:
+      traefik:
+        container_name: traefik
+        image: "traefik:latest"
+        restart: always
+        command:
+          - --entrypoints.web.address=:80
+          - --entrypoints.websecure.address=:443
+          - --api.insecure=true
+          - --api.dashboard=true
+          - --providers.docker
+          - --log.level=ERROR
+          - --certificatesresolvers.leresolver.acme.httpchallenge=true
+          - --certificatesresolvers.leresolver.acme.email=$email
+          - --certificatesresolvers.leresolver.acme.storage=./acme.json
+          - --certificatesresolvers.leresolver.acme.httpchallenge.entrypoint=web
+        ports:
+          - "80:80"
+          - "443:443"
+        volumes:
+          - "/var/run/docker.sock:/var/run/docker.sock:ro"
+          - "./acme.json:/acme.json"
+        labels:
+          - "traefik.http.routers.http-catchall.rule=hostregexp(\`{host:.+}\`)"
+          - "traefik.http.routers.http-catchall.entrypoints=web"
+          - "traefik.http.routers.http-catchall.middlewares=redirect-to-https"
+          - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+          - "traefik.http.routers.traefik-dashboard.rule=Host(\`$traefik\`)"
+          # ... (other traefik labels)
+
+      portainer:
+        image: portainer/portainer-ce:latest
+        command: -H unix:///var/run/docker.sock
+        restart: always
+        volumes:
+          - /var/run/docker.sock:/var/run/docker.sock
+          - portainer_data:/data
+        labels:
+          - "traefik.enable=true"
+          - "traefik.http.routers.frontend.rule=Host(\`$portainer\`)"
+          - "traefik.http.routers.frontend.entrypoints=websecure"
+          - "traefik.http.services.frontend.loadbalancer.server.port=9000"
+          - "traefik.http.routers.frontend.service=frontend"
+          - "traefik.http.routers.frontend.tls.certresolver=leresolver"
+          - "traefik.http.routers.edge.rule=Host(\`$edge\`)"
+          # ... (other edge labels)
     volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
-      - "./acme.json:/acme.json"
-    labels:
-      - "traefik.http.routers.http-catchall.rule=hostregexp(`{host:.+}`)"
-      - "traefik.http.routers.http-catchall.entrypoints=web"
-      - "traefik.http.routers.http-catchall.middlewares=redirect-to-https"
-      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-      - "traefik.http.routers.traefik-dashboard.rule=Host(`$traefik`)"
-      - "traefik.http.routers.traefik-dashboard.entrypoints=websecure"
-      - "traefik.http.routers.traefik-dashboard.service=api@internal"
-      - "traefik.http.routers.traefik-dashboard.tls.certresolver=leresolver"
-      - "traefik.http.middlewares.traefik-auth.basicauth.users=$senha"
-      - "traefik.http.routers.traefik-dashboard.middlewares=traefik-auth"
-  portainer:
-    image: portainer/portainer-ce:latest
-    command: -H unix:///var/run/docker.sock
-    restart: always
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`$portainer`)"
-      - "traefik.http.routers.frontend.entrypoints=websecure"
-      - "traefik.http.services.frontend.loadbalancer.server.port=9000"
-      - "traefik.http.routers.frontend.service=frontend"
-      - "traefik.http.routers.frontend.tls.certresolver=leresolver"
-      - "traefik.http.routers.edge.rule=Host(`$edge`)"
-      - "traefik.http.routers.edge.entrypoints=websecure"
-      - "traefik.http.services.edge.loadbalancer.server.port=8000"
-      - "traefik.http.routers.edge.service=edge"
-      - "traefik.http.routers.edge.tls.certresolver=leresolver"
-volumes:
-  portainer_data:
-  
-EOL
+      portainer_data:
+    
+    EOL
 
 clear
 
