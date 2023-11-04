@@ -122,59 +122,60 @@ clear
 
 sleep 3
 
-    # Create or modify docker-compose.yml file with subdomains
-    cat > docker-compose.yml << EOL
-    version: "3.3"
-    services:
-      traefik:
-        container_name: traefik
-        image: "traefik:latest"
-        restart: always
-        command:
-          - --entrypoints.web.address=:80
-          - --entrypoints.websecure.address=:443
-          - --api.insecure=true
-          - --api.dashboard=true
-          - --providers.docker
-          - --log.level=ERROR
-          - --certificatesresolvers.leresolver.acme.httpchallenge=true
-          - --certificatesresolvers.leresolver.acme.email=$email
-          - --certificatesresolvers.leresolver.acme.storage=./acme.json
-          - --certificatesresolvers.leresolver.acme.httpchallenge.entrypoint=web
-        ports:
-          - "80:80"
-          - "443:443"
-        volumes:
-          - "/var/run/docker.sock:/var/run/docker.sock:ro"
-          - "./acme.json:/acme.json"
-        labels:
-          - "traefik.http.routers.http-catchall.rule=hostregexp(\`{host:.+}\`)"
-          - "traefik.http.routers.http-catchall.entrypoints=web"
-          - "traefik.http.routers.http-catchall.middlewares=redirect-to-https"
-          - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-          - "traefik.http.routers.traefik-dashboard.rule=Host(\`$traefik\`)"
-          # ... (other traefik labels)
 
-      portainer:
-        image: portainer/portainer-ce:latest
-        command: -H unix:///var/run/docker.sock
-        restart: always
-        volumes:
-          - /var/run/docker.sock:/var/run/docker.sock
-          - portainer_data:/data
-        labels:
-          - "traefik.enable=true"
-          - "traefik.http.routers.frontend.rule=Host(\`$portainer\`)"
-          - "traefik.http.routers.frontend.entrypoints=websecure"
-          - "traefik.http.services.frontend.loadbalancer.server.port=9000"
-          - "traefik.http.routers.frontend.service=frontend"
-          - "traefik.http.routers.frontend.tls.certresolver=leresolver"
-          - "traefik.http.routers.edge.rule=Host(\`$edge\`)"
-          # ... (other edge labels)
+    # Create or modify docker-compose.yml file with subdomains
+    cat > docker-compose.yml <<EOL
+version: "3.3"
+services:
+  traefik:
+    container_name: traefik
+    image: "traefik:latest"
+    restart: always
+    command:
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --api.insecure=true
+      - --api.dashboard=true
+      - --providers.docker
+      - --log.level=ERROR
+      - --certificatesresolvers.leresolver.acme.httpchallenge=true
+      - --certificatesresolvers.leresolver.acme.email=$email
+      - --certificatesresolvers.leresolver.acme.storage=./acme.json
+      - --certificatesresolvers.leresolver.acme.httpchallenge.entrypoint=web
+    ports:
+      - "80:80"
+      - "443:443"
     volumes:
-      portainer_data:
-    
-    EOL
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./acme.json:/acme.json"
+    labels:
+      - "traefik.http.routers.http-catchall.rule=hostregexp(\`{host:.+}\`)"
+      - "traefik.http.routers.http-catchall.entrypoints=web"
+      - "traefik.http.routers.http-catchall.middlewares=redirect-to-https"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      - "traefik.http.routers.traefik-dashboard.rule=Host(\`$traefik\`)"
+      # ... (other traefik labels)
+
+  portainer:
+    image: portainer/portainer-ce:latest
+    command: -H unix:///var/run/docker.sock
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=Host(\`$portainer\`)"
+      - "traefik.http.routers.frontend.entrypoints=websecure"
+      - "traefik.http.services.frontend.loadbalancer.server.port=9000"
+      - "traefik.http.routers.frontend.service=frontend"
+      - "traefik.http.routers.frontend.tls.certresolver=leresolver"
+      - "traefik.http.routers.edge.rule=Host(\`$edge\`)"
+      # ... (other edge labels)
+volumes:
+  portainer_data:
+EOL
+
 
 clear
 
