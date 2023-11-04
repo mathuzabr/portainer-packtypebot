@@ -186,7 +186,6 @@ clear
 #
 ###############################################
 
-cd Portainer/
 sudo docker compose up -d
 
 
