@@ -22,7 +22,7 @@ sudo apt update && sudo apt install -y git && git clone https://github.com/mathu
 
 <p>Creditos do arquivo docker-compose.yml <a href="https://www.youtube.com/@fabricandosuaideiatutoriais">Andre Almeida</a></p>
 <p>OrionDesign pois copiei e modelei seu README.md e Instalador 😎 <a href="https://github.com/oriondesign2015/SetupOrion">Oriondesign2015</a> </p>
-<p>Claudeir Ribeiro - O mestre dos Grupos de WhatsApp <a href="https://chat.whatsapp.com/CZ67LfWGQefBTd2sxIoxfh">Comunidade Typebot</a>.
+<p>Claudeir Ribeiro - O mestre dos Grupos de WhatsApp <a href="https://chat.whatsapp.com/CZ67LfWGQefBTd2sxIoxfh">Comunidade Typebot</a>
 <br><br><br>
 
 > Convido você a conhecer nosso pack com vários modelos de fluxo de automação usando Typebot
