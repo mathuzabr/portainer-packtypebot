@@ -185,7 +185,8 @@ clear
 #
 ###############################################
 
-sudo docker-compose up -d
+cd Portainer/
+sudo docker compose up -d
 
 
 echo -e "\e[32m\e[0m"
