@@ -105,10 +105,6 @@ cd Portainer
 
 sleep 3
 
-touch acme.json
-
-sudo chmod 600 acme.json
-
 echo ""
 echo ""
 echo "Atualizado/Instalado com Sucesso"
@@ -190,6 +186,20 @@ EOL
 
 clear
 
+
+###############################################
+#
+# Certificates letsencrypt
+#
+###############################################
+
+echo ""
+echo ""
+echo "Instalando certificado letsencrypt"
+
+touch acme.json
+
+sudo chmod 600 acme.json
 
 ###############################################
 #
