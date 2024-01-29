@@ -21,7 +21,7 @@ sudo apt update && sudo apt install -y git && git clone https://github.com/mathu
 ## ❤️ Creditos
 
 <p>Creditos do arquivo docker-compose.yml <a href="https://www.youtube.com/@fabricandosuaideiatutoriais">Andre Almeida</a></p>
-<br><br><br>
+<br>
 
 > 🚀 Bem-vindo ao Mundo da Automação com Typebot! 🤖
 
@@ -33,12 +33,12 @@ sudo apt update && sudo apt install -y git && git clone https://github.com/mathu
 <p>✅ Acesso Vitalício
 <p>✅ Template Website Typebot (HTML5, CSS e JS)
 
-<p>Recursos Especiais:
+> Recursos Especiais:
 
 <p>💻 Painel Administrativo 3.0
 <p>🗃️ Arquivos para montar sua própria API
 
-<p>Fluxos Personalizados:
+> Fluxos Personalizados:
 
 <p>🎰 Casa Lotérica (Com Resultado em tempo Real)
 <p>🍔 Delivery (Com Calculadora de Itens)
@@ -56,7 +56,7 @@ sudo apt update && sudo apt install -y git && git clone https://github.com/mathu
 <p>🎰 Igaming
 <p>🤖 ChatGPT
 
-<p>Extras Incríveis:
+> Extras Incríveis:
 
 <p>📦 Pacote com +400 Funis para estudo
 <p>🎥 Incluído +100 Vídeo Aulas
