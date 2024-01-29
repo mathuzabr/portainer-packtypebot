@@ -23,41 +23,42 @@ sudo apt update && sudo apt install -y git && git clone https://github.com/mathu
 <p>Creditos do arquivo docker-compose.yml <a href="https://www.youtube.com/@fabricandosuaideiatutoriais">Andre Almeida</a></p>
 <br><br><br>
 
-> Convido você a conhecer nosso pack com vários modelos de fluxo de automação usando Typebot
-[clicando aqui](https://app.afcode.com.br/packtypebot)
+> 🚀 Bem-vindo ao Mundo da Automação com Typebot! 🤖
 
-<p>✅ Instalação do Typebot na sua VPS (Via Docker)</p>
-<p>✅ Área de Membros</p>
-<p>✅ Atualizações frequentes</p>
-<p>✅ Acesso Vitalício </p>
-<p>✅ Grupo de Network</p>
-<p>✅ Template Website Typebot (HTML5, CSS e JS)</p>
-<p>💻 Painel Administrativo 3.0</p>
-<p>🗃️ Arquivos para montar sua própria API</p>
-<p>🎰 Funil Para Casa Lotérica (Com Resultado em tempo Real)</p>
-<p>🍔 Funil Para Delivery (Com Calculadora de Itens)</p>
-<p>🏠 Funil Para Imobiliária (Atendimento por IA)</p>
-<p>🚗 Funil Para Loja de Veículos (Com consulta tabela FIPE)</p>
-<p>🍰 Funil Para Doceria (Com Calculadora de Itens)</p>
-<p>💈 Funil Para Barbearia (Com sistema de Agendamento)</p>
-<p>🦷 Funil Para Clínica Dentaria (Atendimento por IA)</p>
-<p>💆 Funil Para Clínica de Estética</p>
-<p>💼 Funil de Consultas de Dados (CNPJ, CEP, CORREIOS e muito mais...)</p>
-<p>📶 Funil Para Provedor de internet</p>
-<p>🏋️ Funil Para Academia</p>
-<p>⚖️ Funil Para Advocacia</p>
-<p>📺 Funil Para IPTV</p>
-<p>🎰 Funil Para IGAME</p>
-<p>🤖 Funil ChatGPT</p>
-<p>📦 Pacote com +200 Funis para estudo</p>
-<p>🎥 Incluído Vídeo Aulas</p>
-<p>e muito mais...</p>
+<p>Descubra nosso incrível Pack Typebot repleto de fluxos de automação prontos para impulsionar o seu negócio! 🌐
+<p>👉 https://packtypebot.com.br
 
-<p>Você também pode usar nosso pack usando a versão Free do Typebot</p>
-<p>https://typebot.io</p>
+<p>✅ Área de Membros
+<p>✅ Atualizações frequentes
+<p>✅ Acesso Vitalício
+<p>✅ Template Website Typebot (HTML5, CSS e JS)
 
-<p>🛒 COMPRE AGORA!</p>
-<p>https://seguro.afcode.store/r/INQ0WFFVL4</p>
+<p>Recursos Especiais:
 
-<p>Dúvidas e Suporte:</p>
-<p>https://app.afcode.com.br/suporte</p>
+<p>💻 Painel Administrativo 3.0
+<p>🗃️ Arquivos para montar sua própria API
+
+<p>Fluxos Personalizados:
+
+<p>🎰 Casa Lotérica (Com Resultado em tempo Real)
+<p>🍔 Delivery (Com Calculadora de Itens)
+<p>🏠 Imobiliária (Atendimento por IA)
+<p>🚗 Loja de Veículos (Com consulta tabela FIPE)
+<p>🍰 Doceria (Com Calculadora de Itens)
+<p>💈 Barbearia (Com sistema de Agendamento)
+<p>🦷 Clínica Dentaria (Atendimento por IA)
+<p>💆 Clínica de Estética
+<p>💼 Consultas de Dados (CNPJ, CEP, CORREIOS e muito mais...)
+<p>📶 Provedor de Internet
+<p>🏋️ Academia
+<p>⚖️ Advocacia
+<p>📺 IPTV
+<p>🎰 Igaming
+<p>🤖 ChatGPT
+
+<p>Extras Incríveis:
+
+<p>📦 Pacote com +400 Funis para estudo
+<p>🎥 Incluído +100 Vídeo Aulas
+
+<p>Explore o potencial da automação com Typebot - Sua jornada para a eficiência começa agora! 🚀
