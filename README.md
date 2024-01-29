@@ -8,7 +8,7 @@ Você deve criar 3 subdominios do tipo 'A' na Cloudflare
 <p>traefik.seudominio.com</p>
 <p>edge.seudominio.com</p>
 
-<a href="https://app.afcode.com.br/gerador-senhas">Gerador de Senha htpasswd</a>
+<a href="https://packtypebot.com.br/gerador/htpasswd.php">Gerador de Senha htpasswd</a>
 
 ## 💽 Instalação
 
