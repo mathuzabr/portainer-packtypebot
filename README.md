@@ -30,7 +30,7 @@ sudo apt update && sudo apt install -y git && git clone https://github.com/mathu
 > 🚀 Bem-vindo ao Mundo da Automação com Typebot! 🤖
 
 <p>Descubra nosso incrível Pack Typebot repleto de fluxos de automação prontos para impulsionar o seu negócio! 🌐
-<p>👉 https://packtypebot.com.br
+<p>👉 <a href="https://packtypebot.com.br">packtypebot.com.br</a>
 
 <p>✅ Área de Membros
 <p>✅ Atualizações frequentes
