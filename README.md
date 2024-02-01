@@ -10,7 +10,9 @@ Você deve criar 3 subdominios do tipo 'A' na Cloudflare
 
 <a href="https://packtypebot.com.br/gerador/htpasswd.php">Gerador de Senha htpasswd</a>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/GuT92GXosTw?si=ZZ95C4CeTZzilMEB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+## 🎥 Tutorial
+
+https://www.youtube.com/watch?v=GuT92GXosTw
 
 ## 💽 Instalação
 
