@@ -3,10 +3,17 @@
 
 ## ⚠️ Pré-requisitos
 
-Você deve criar 3 subdominios do tipo 'A' na Cloudflare 
-<p>portainer.seudominio.com</p>
-<p>traefik.seudominio.com</p>
-<p>edge.seudominio.com</p>
+Você deve criar 6 subdominios do tipo 'A' na Cloudflare
+*Status do Proxy deve esta desligado
+
+<p>portainer</p>
+<p>www.portainer</p>
+<p>traefik</p>
+<p>www.traefik</p>
+<p>edge</p>
+<p>www.edge</p>
+
+<img src="https://packtypebot.com.br/wp-content/uploads/2023/12/2-768x292.png"> 
 
 <a href="https://packtypebot.com.br/gerador/htpasswd.php">Gerador de Senha htpasswd</a>
 
