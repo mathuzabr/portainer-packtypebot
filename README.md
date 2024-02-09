@@ -13,7 +13,7 @@ Você deve criar 6 subdominios do tipo 'A' na Cloudflare
 <p>edge</p>
 <p>www.edge</p>
 
-<img src="https://packtypebot.com.br/wp-content/uploads/2023/12/2-768x292.png"> 
+<img src="https://packtypebot.com.br/wp-content/uploads/2023/12/apontamentos.png"> 
 
 <a href="https://packtypebot.com.br/gerador/htpasswd.php">Gerador de Senha htpasswd</a>
 
