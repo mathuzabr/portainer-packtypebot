@@ -15,17 +15,6 @@ Você deve criar 6 subdominios do tipo 'A' na Cloudflare
 
 <img src="https://packtypebot.com.br/wp-content/uploads/2023/12/apontamentos.png"> 
 
-<strong>Caso  instância do Portainer expire</strong>
-<img class="alignnone wp-image-2222 size-full" src="https://packtypebot.com.br/wp-content/uploads/2023/12/erro-port.jpg" alt="" width="950" height="385" />
-
-Abra o terminal e rode os seguintes comandos:
-
-<p>cd Portainer
-
-<p>docker compose down --remove-orphans
-<p>docker compose pull portainer
-<p>docker compose up -d
-
 <a href="https://packtypebot.com.br/gerador/htpasswd.php">Gerador de Senha htpasswd</a>
 
 ## 🎥 Tutorial
@@ -39,6 +28,17 @@ https://www.youtube.com/watch?v=GuT92GXosTw
 ```
 sudo apt update && sudo apt install -y git && git clone https://github.com/mathuzabr/portainer-packtypebot.git && cd portainer-packtypebot && sudo chmod +x install.sh && ./install.sh
 ```
+
+## Caso  instância do Portainer expire
+<img class="alignnone wp-image-2222 size-full" src="https://packtypebot.com.br/wp-content/uploads/2023/12/erro-port.jpg" alt="" width="950" height="385" />
+
+Abra o terminal e rode os seguintes comandos:
+
+<p>cd Portainer
+
+<p>docker compose down --remove-orphans
+<p>docker compose pull portainer
+<p>docker compose up -d
 
 ## ❤️ Creditos
 
