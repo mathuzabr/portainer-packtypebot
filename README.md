@@ -20,11 +20,11 @@ Você deve criar 6 subdominios do tipo 'A' na Cloudflare
 
 Abra o terminal e rode os seguintes comandos:
 
-cd Portainer
+<p>cd Portainer
 
-docker compose down --remove-orphans
-docker compose pull portainer
-docker compose up -d
+<p>docker compose down --remove-orphans
+<p>docker compose pull portainer
+<p>docker compose up -d
 
 <a href="https://packtypebot.com.br/gerador/htpasswd.php">Gerador de Senha htpasswd</a>
 
