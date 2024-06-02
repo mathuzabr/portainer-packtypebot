@@ -42,7 +42,7 @@ Abra o terminal e rode os seguintes comandos:
 
 ## ❤️ Creditos
 
-<p>Creditos do arquivo docker-compose.yml <a href="https://www.youtube.com/@fabricandosuaideiatutoriais">Andre Almeida</a></p>
+<p>Creditos do arquivo docker-compose.yml @Andre Almeida</p>
 <br>
 
 > 🚀 Bem-vindo ao Mundo da Automação com Typebot! 🤖
