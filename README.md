@@ -52,13 +52,17 @@ Abra o terminal e rode os seguintes comandos:
 
 <p>✅ Área de Membros
 <p>✅ Atualizações frequentes
-<p>✅ Acesso Vitalício
-<p>✅ Template Website Typebot (HTML5, CSS e JS)
 
-> Recursos Especiais:
+> Conteúdo Incluso no Pack:
 
+<p>🤑 Painel Typebot Micro-SaaS
+<p>🎯 Whaticket SaaS
+<p>🧩 Extensão Pack Typebot
 <p>💻 Painel Administrativo 3.0
+<p>📅 Painel de Agendamentos
+<p>🔗 Typebot Link Manager
 <p>🗃️ Arquivos para montar sua própria API
+<p>🌐 Template Website Typebot
 
 > Fluxos Personalizados:
 
@@ -80,7 +84,15 @@ Abra o terminal e rode os seguintes comandos:
 
 > Extras Incríveis:
 
-<p>📦 Pacote com +400 Funis para estudo
-<p>🎥 Incluído +100 Vídeo Aulas
+<p>📦 Pacote com +500 Funis para estudo
+<p>🎥 Incluído +180 Vídeo Aulas
+<p>🏗️ + 30 Stacks para Portainer Versão Standalone
+<p>😍 Comunidade no Facebook para Membros
+<p>🎫 Suporte via Ticket
+<p>🎉 Bônus incríveis
 
 <p>Explore o potencial da automação com Typebot - Sua jornada para a eficiência começa agora! 🚀
+
+<p>🛒 Não perca tempo! Seja membro do Pack Typebot agora!
+<p>Aproveite o valor promocional para acesso vitalício!
+<p>👉 <a href="https://packtypebot.com.br/#preco">packtypebot.com.br</a>
