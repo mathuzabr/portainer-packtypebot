@@ -229,7 +229,7 @@ echo -e "\e[32mAcesse o Portainer através do link: https://$portainer\e[0m"
 echo -e "\e[32m\e[0m"
 echo -e "\e[32mAcesse o Traefik através do link: https://$traefik\e[0m"
 echo -e "\e[32m\e[0m"
-echo -e "\e[32mSugestões ou duvidas: https://wa.me/+5562991252643\e[0m"
+echo -e "\e[32mhttps://packtypebot.com.br\e[0m"
 echo -e "\e[32m\e[0m"
 echo -e "\e[32m\e[0m"
 
