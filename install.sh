@@ -10,7 +10,7 @@ echo -e "\e[32m |_| /_/    \_\_____|_|\_\    |_|     |_|  |_|    |______|____/ \
 echo -e "\e[32m                                                                              \e[0m"                                                                                                                                            
 echo -e "\e[32mAuto Instalador Docker/Portainer Pack Typebot                                 \e[0m"
 echo -e "\e[32mCreditos do arquivo docker-compose.yml                                        \e[0m"
-echo -e "\e[32mAndre Almeida https://www.youtube.com/@fabricandosuaideiatutoriais            \e[0m"
+echo -e "\e[32mAndre Almeida                                                                 \e[0m"
 echo -e "\e[32m\e[0m"
 echo -e "\e[32m\e[0m"
 
