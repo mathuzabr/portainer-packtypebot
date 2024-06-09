@@ -10,11 +10,11 @@ echo -e "\e[32m\e[0m"
 echo -e "\e[32m\e[0m"
 # Função para mostrar um banner colorido
 function show_banner() {
-  echo -e "\e[32m==============================================================================\e[0m"
-  echo -e "\e[32m=                                                                            =\e[0m"
-  echo -e "\e[32m=                  \e[33m🌟 Preencha as informações solicitadas abaixo 🌟\e[32m                 =\e[0m"
-  echo -e "\e[32m=                                                                            =\e[0m"
-  echo -e "\e[32m==============================================================================\e[0m"
+echo -e "\e[32m==============================================================================\e[0m"
+echo -e "\e[32m=                                                                            =\e[0m"
+echo -e "\e[32m=                 \e[33mPreencha as informações solicitadas abaixo\e[32m                 =\e[0m"
+echo -e "\e[32m=                                                                            =\e[0m"
+echo -e "\e[32m==============================================================================\e[0m"
 }
 # Função para mostrar uma mensagem de etapa
 function show_step() {
