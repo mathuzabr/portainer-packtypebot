@@ -1,131 +1,73 @@
 echo -e "\e[32m\e[0m"
 echo -e "\e[32m\e[0m"
-echo -e "\e[32m                                                                       \e[0m"
 echo -e "\e[32m  _____        _____ _  __  _________     _______  ______ ____   ____ _______ \e[0m"
 echo -e "\e[32m |  __ \ /\   / ____| |/ / |__   __\ \   / /  __ \|  ____|  _ \ / __ \__   __|\e[0m"
 echo -e "\e[32m | |__) /  \ | |    | ' /     | |   \ \_/ /| |__) | |__  | |_) | |  | | | |   \e[0m"
 echo -e "\e[32m |  ___/ /\ \| |    |  <      | |    \   / |  ___/|  __| |  _ <| |  | | | |   \e[0m"
 echo -e "\e[32m | |  / ____ \ |____| . \     | |     | |  | |    | |____| |_) | |__| | | |   \e[0m"
 echo -e "\e[32m |_| /_/    \_\_____|_|\_\    |_|     |_|  |_|    |______|____/ \____/  |_|   \e[0m"
-echo -e "\e[32m                                                                              \e[0m"                                                                                                                                            
-echo -e "\e[32mAuto Instalador Docker/Portainer Pack Typebot                                 \e[0m"
-echo -e "\e[32mCreditos do arquivo docker-compose.yml                                        \e[0m"
-echo -e "\e[32mAndre Almeida                                                                 \e[0m"
 echo -e "\e[32m\e[0m"
 echo -e "\e[32m\e[0m"
-
-
-echo ""
-echo -e "\e[32m==============================================================================\e[0m"
-echo -e "\e[32m=                                                                            =\e[0m"
-echo -e "\e[32m=                 \e[33mPreencha as informações solicitadas abaixo\e[32m                 =\e[0m"
-echo -e "\e[32m=                                                                            =\e[0m"
-echo -e "\e[32m==============================================================================\e[0m"
-echo ""
-echo ""
-echo ""
-
-# Prompt for email, traefik, senha, portainer, and edge variables
-echo -e "\e[32mPasso \e[33m1/5\e[0m"
-read -p "Endereço de e-mail: " email
-echo ""
-echo -e "\e[32mPasso \e[33m2/5\e[0m"
-read -p "Dominio do Traefik (ex: traefik.seudominio.com): " traefik
-echo ""
-echo -e "\e[32mPasso \e[33m3/5\e[0m"
-read -p "Senha do Traefik: " senha
-echo ""
-echo -e "\e[32mPasso \e[33m4/5\e[0m"
-read -p "Dominio do Portainer (ex: portainer.seudominio.com): " portainer
-echo ""
-echo -e "\e[32mPasso \e[33m5/5\e[0m"
-read -p "Dominio do Edge (ex: edge.seudominio.com): " edge
-echo ""
-
-#########################################################
-#
-# VERIFICAÇÃO DE DADOS
-#
-#########################################################
-
+# Função para mostrar um banner colorido
+function show_banner() {
+  echo -e "\e[32m==============================================================================\e[0m"
+  echo -e "\e[32m=                                                                            =\e[0m"
+  echo -e "\e[32m=                  \e[33m🌟 Preencha as informações solicitadas abaixo 🌟\e[32m                 =\e[0m"
+  echo -e "\e[32m=                                                                            =\e[0m"
+  echo -e "\e[32m==============================================================================\e[0m"
+}
+# Função para mostrar uma mensagem de etapa
+function show_step() {
+  echo -e "\e[32mPasso \e[33m$1/5\e[0m"
+}
+# Mostrar banner inicial
 clear
-
+show_banner
 echo ""
-echo "Seu E-mail: $email"
-echo "Dominio do Traefik: $traefik"
-echo "Senha do Traefik: $senha"
-echo "Dominio do Portainer: $portainer"
-echo "Dominio do Edge: $edge"
+# Solicitar informações do usuário
+show_step 1
+read -p "📧 Endereço de e-mail: " email
 echo ""
+show_step 2
+read -p "🌐 Dominio do Traefik (ex: traefik.seudominio.com): " traefik
+echo ""
+show_step 3
+read -s -p "🔑 Senha do Traefik: " senha
+echo ""
+echo ""
+show_step 4
+read -p "🌐 Dominio do Portainer (ex: portainer.seudominio.com): " portainer
+echo ""
+show_step 5
+read -p "🌐 Dominio do Edge (ex: edge.seudominio.com): " edge
+echo ""
+# Verificação de dados
+clear
+echo ""
+echo "📧 Seu E-mail: $email"
+echo "🌐 Dominio do Traefik: $traefik"
+echo "🔑 Senha do Traefik: ********"
+echo "🌐 Dominio do Portainer: $portainer"
+echo "🌐 Dominio do Edge: $edge"
 echo ""
 read -p "As informações estão certas? (y/n): " confirma1
 if [ "$confirma1" == "y" ]; then
-
-clear
-
-echo -e "\e[32m\e[0m"
-echo -e "\e[32m\e[0m"
-echo -e "\e[32m                                                                       \e[0m"
-echo -e "\e[32m  _____        _____ _  __  _________     _______  ______ ____   ____ _______ \e[0m"
-echo -e "\e[32m |  __ \ /\   / ____| |/ / |__   __\ \   / /  __ \|  ____|  _ \ / __ \__   __|\e[0m"
-echo -e "\e[32m | |__) /  \ | |    | ' /     | |   \ \_/ /| |__) | |__  | |_) | |  | | | |   \e[0m"
-echo -e "\e[32m |  ___/ /\ \| |    |  <      | |    \   / |  ___/|  __| |  _ <| |  | | | |   \e[0m"
-echo -e "\e[32m | |  / ____ \ |____| . \     | |     | |  | |    | |____| |_) | |__| | | |   \e[0m"
-echo -e "\e[32m |_| /_/    \_\_____|_|\_\    |_|     |_|  |_|    |______|____/ \____/  |_|   \e[0m"
-echo -e "\e[32m                                                                              \e[0m"                                                                                                                                            
-echo -e "\e[32m                                                                       \e[0m"
-echo -e "\e[32m\e[0m"
-echo -e "\e[32m\e[0m"
-
-loading1 2 $width
-
-#########################################################
-#
-# INSTALANDO DEPENDENCIAS
-#
-#########################################################
-
-cd
-cd
-
-clear
-
-sudo apt update -y
-sudo apt upgrade -y
-sudo apt install curl
-
-curl -fsSL https://get.docker.com -o get-docker.sh
-
-sudo sh get-docker.sh
-
-sleep 3
-
-mkdir Portainer
-cd Portainer
-
-sleep 3
-
-echo ""
-echo ""
-echo "Atualizado/Instalado com Sucesso"
-
-sleep 3
-
-clear
-
-
-#######################################################
-#
-# CRIANDO DOCKER-COMPOSE.YML
-#
-#######################################################
-
-sleep 3
-
-
-    # Create or modify docker-compose.yml file with subdomains
-    cat > docker-compose.yml <<EOL
-version: "3.3"
+  clear
+  #########################################################
+  # INSTALANDO DEPENDENCIAS
+  #########################################################
+  sudo apt update -y && sudo apt upgrade -y
+  sudo apt install -y curl
+  curl -fsSL https://get.docker.com -o get-docker.sh
+  sudo sh get-docker.sh
+  mkdir -p ~/Portainer && cd ~/Portainer
+  echo -e "\e[32mAtualizado/Instalado com Sucesso\e[0m"
+  sleep 3
+  clear
+  #########################################################
+  # CRIANDO DOCKER-COMPOSE.YML
+  #########################################################
+  cat > docker-compose.yml <<EOL
 services:
   traefik:
     container_name: traefik
@@ -159,7 +101,6 @@ services:
       - "traefik.http.routers.traefik-dashboard.tls.certresolver=leresolver"
       - "traefik.http.middlewares.traefik-auth.basicauth.users=$senha"
       - "traefik.http.routers.traefik-dashboard.middlewares=traefik-auth"
-
   portainer:
     image: portainer/portainer-ce:latest
     command: -H unix:///var/run/docker.sock
@@ -182,67 +123,31 @@ services:
 volumes:
   portainer_data:
 EOL
-
-
-clear
-
-
-###############################################
-#
-# Certificates letsencrypt
-#
-###############################################
-
-echo ""
-echo ""
-echo "Instalando certificado letsencrypt"
-
-touch acme.json
-
-sudo chmod 600 acme.json
-
-###############################################
-#
-# INICIANDO CONTAINER
-#
-###############################################
-
-sudo docker compose up -d
-
-
+  #########################################################
+  # CERTIFICADOS LETSENCRYPT
+  #########################################################
+  echo -e "\e[32mInstalando certificado LetsEncrypt\e[0m"
+  touch acme.json
+  sudo chmod 600 acme.json
+  #########################################################
+  # INICIANDO CONTAINER
+  #########################################################
+  sudo docker compose up -d
 echo -e "\e[32m\e[0m"
 echo -e "\e[32m\e[0m"
-echo -e "\e[32m\e[0m"
-echo -e "\e[32m\e[0m"
-echo -e "\e[32m _                             _              _        \e[0m"
-echo -e "\e[32m| |                _          | |            | |       \e[0m"
-echo -e "\e[32m| | ____    ___  _| |_  _____ | |  _____   __| |  ___  \e[0m"
-echo -e "\e[32m| ||  _ \  /___)(_   _)(____ || | (____ | / _  | / _ \ \e[0m"
-echo -e "\e[32m| || | | ||___ |  | |_ / ___ || | / ___ |( (_| || |_| |\e[0m"
-echo -e "\e[32m|_||_| |_|(___/    \__)\_____| \_)\_____| \____| \___/ \e[0m"
-echo -e "\e[32m                                                       \e[0m"              
-echo -e "\e[32m\e[0m"
-echo -e "\e[32m\e[0m"
+echo -e "\e[32m  _____        _____ _  __  _________     _______  ______ ____   ____ _______ \e[0m"
+echo -e "\e[32m |  __ \ /\   / ____| |/ / |__   __\ \   / /  __ \|  ____|  _ \ / __ \__   __|\e[0m"
+echo -e "\e[32m | |__) /  \ | |    | ' /     | |   \ \_/ /| |__) | |__  | |_) | |  | | | |   \e[0m"
+echo -e "\e[32m |  ___/ /\ \| |    |  <      | |    \   / |  ___/|  __| |  _ <| |  | | | |   \e[0m"
+echo -e "\e[32m | |  / ____ \ |____| . \     | |     | |  | |    | |____| |_) | |__| | | |   \e[0m"
+echo -e "\e[32m |_| /_/    \_\_____|_|\_\    |_|     |_|  |_|    |______|____/ \____/  |_|   \e[0m"
 echo -e "\e[32m\e[0m"
 echo -e "\e[32m\e[0m"
 echo -e "\e[32mAcesse o Portainer através do link: https://$portainer\e[0m"
-echo -e "\e[32m\e[0m"
 echo -e "\e[32mAcesse o Traefik através do link: https://$traefik\e[0m"
 echo -e "\e[32m\e[0m"
 echo -e "\e[32mhttps://packtypebot.com.br\e[0m"
-echo -e "\e[32m\e[0m"
-echo -e "\e[32m\e[0m"
-
-#########################################################
-#
-# USUARIO PREENCHEU DADOS ERRADOS
-#
-#########################################################
-
-elif [ "$confirma1" == "n" ]; then
-    echo "Encerrando a instalação, por favor, inicie a instalação novamente."
-    exit 0
 else
-    echo "Resposta inválida. Digite 'y' para confirmar ou 'n' para encerrar a instalação."
-    exit 1
+  echo "Encerrando a instalação, por favor, inicie a instalação novamente."
+  exit 0
 fi
