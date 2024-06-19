@@ -1,5 +1,5 @@
 
-<img src="[https://i.postimg.cc/tCwpVyCT/Typebot-Cloner.png](https://i.postimg.cc/4dh7HRpq/autoinstall.png)"> 
+<img src="https://i.postimg.cc/4dh7HRpq/autoinstall.png"> 
 
 ## ⚠️ Pré-requisitos
 
