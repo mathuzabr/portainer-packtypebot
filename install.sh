@@ -1,29 +1,96 @@
-echo -e "\e[32m\e[0m"
-echo -e "\e[32m\e[0m"
-echo -e "\e[32m  _____        _____ _  __  _________     _______  ______ ____   ____ _______ \e[0m"
-echo -e "\e[32m |  __ \ /\   / ____| |/ / |__   __\ \   / /  __ \|  ____|  _ \ / __ \__   __|\e[0m"
-echo -e "\e[32m | |__) /  \ | |    | ' /     | |   \ \_/ /| |__) | |__  | |_) | |  | | | |   \e[0m"
-echo -e "\e[32m |  ___/ /\ \| |    |  <      | |    \   / |  ___/|  __| |  _ <| |  | | | |   \e[0m"
-echo -e "\e[32m | |  / ____ \ |____| . \     | |     | |  | |    | |____| |_) | |__| | | |   \e[0m"
-echo -e "\e[32m |_| /_/    \_\_____|_|\_\    |_|     |_|  |_|    |______|____/ \____/  |_|   \e[0m"
-echo -e "\e[32m\e[0m"
-echo -e "\e[32m\e[0m"
+#!/bin/bash
+
+# Cores
+GREEN='\e[32m'
+YELLOW='\e[33m'
+RED='\e[31m'
+BLUE='\e[34m'
+NC='\e[0m'
+
+# Função para mostrar spinner de carregamento
+spinner() {
+    local pid=$1
+    local delay=0.1
+    local spinstr='|/-\'
+    while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
+        local temp=${spinstr#?}
+        printf " [%c]  " "$spinstr"
+        local spinstr=$temp${spinstr%"$temp"}
+        sleep $delay
+        printf "\b\b\b\b\b\b"
+    done
+    printf "    \b\b\b\b"
+}
+
+# Função para verificar requisitos do sistema
+check_system_requirements() {
+    echo -e "${BLUE}Verificando requisitos do sistema...${NC}"
+    
+    # Verificar espaço em disco
+    local free_space=$(df -h / | awk 'NR==2 {print $4}' | sed 's/G//')
+    if (( $(echo "$free_space < 10" | bc -l) )); then
+        echo -e "${RED}❌ Erro: Espaço em disco insuficiente. Mínimo requerido: 10GB${NC}"
+        return 1
+    fi
+    
+    # Verificar memória RAM
+    local total_mem=$(free -g | awk 'NR==2 {print $2}')
+    if [ $total_mem -lt 2 ]; then
+        echo -e "${RED}❌ Erro: Memória RAM insuficiente. Mínimo requerido: 2GB${NC}"
+        return 1
+    fi
+    
+    echo -e "${GREEN}✅ Requisitos do sistema atendidos${NC}"
+    return 0
+}
+
+# Logo animado
+show_animated_logo() {
+    clear
+    echo -e "${GREEN}"
+    echo -e "  _____        _____ _  __  _________     _______  ______ ____   ____ _______ "
+    echo -e " |  __ \ /\   / ____| |/ / |__   __\ \   / /  __ \|  ____|  _ \ / __ \__   __|"
+    echo -e " | |__) /  \ | |    | ' /     | |   \ \_/ /| |__) | |__  | |_) | |  | | | |   "
+    echo -e " |  ___/ /\ \| |    |  <      | |    \   / |  ___/|  __| |  _ <| |  | | | |   "
+    echo -e " | |  / ____ \ |____| . \     | |     | |  | |    | |____| |_) | |__| | | |   "
+    echo -e " |_| /_/    \_\_____|_|\_\    |_|     |_|  |_|    |______|____/ \____/  |_|   "
+    echo -e "${NC}"
+    sleep 1
+}
+
 # Função para mostrar um banner colorido
 function show_banner() {
-echo -e "\e[32m==============================================================================\e[0m"
-echo -e "\e[32m=                                                                            =\e[0m"
-echo -e "\e[32m=                 \e[33mPreencha as informações solicitadas abaixo\e[32m                 =\e[0m"
-echo -e "\e[32m=                                                                            =\e[0m"
-echo -e "\e[32m==============================================================================\e[0m"
+    echo -e "${GREEN}=============================================================================="
+    echo -e "=                                                                            ="
+    echo -e "=                 ${YELLOW}Preencha as informações solicitadas abaixo${GREEN}                 ="
+    echo -e "=                                                                            ="
+    echo -e "==============================================================================${NC}"
 }
-# Função para mostrar uma mensagem de etapa
+
+# Função para mostrar uma mensagem de etapa com barra de progresso
 function show_step() {
-  echo -e "\e[32mPasso \e[33m$1/5\e[0m"
+    local current=$1
+    local total=5
+    local percent=$((current * 100 / total))
+    local completed=$((percent / 2))
+    
+    echo -ne "${GREEN}Passo ${YELLOW}$current/$total ${GREEN}["
+    for ((i=0; i<50; i++)); do
+        if [ $i -lt $completed ]; then
+            echo -ne "="
+        else
+            echo -ne " "
+        fi
+    done
+    echo -e "] ${percent}%${NC}"
 }
+
 # Mostrar banner inicial
 clear
+show_animated_logo
 show_banner
 echo ""
+
 # Solicitar informações do usuário
 show_step 1
 read -p "📧 Endereço de e-mail: " email
@@ -41,33 +108,50 @@ echo ""
 show_step 5
 read -p "🌐 Dominio do Edge (ex: edge.seudominio.com): " edge
 echo ""
+
 # Verificação de dados
 clear
+echo -e "${BLUE}📋 Resumo das Informações${NC}"
+echo -e "${GREEN}================================${NC}"
+echo -e "📧 Seu E-mail: ${YELLOW}$email${NC}"
+echo -e "🌐 Dominio do Traefik: ${YELLOW}$traefik${NC}"
+echo -e "🔑 Senha do Traefik: ${YELLOW}********${NC}"
+echo -e "🌐 Dominio do Portainer: ${YELLOW}$portainer${NC}"
+echo -e "🌐 Dominio do Edge: ${YELLOW}$edge${NC}"
+echo -e "${GREEN}================================${NC}"
 echo ""
-echo "📧 Seu E-mail: $email"
-echo "🌐 Dominio do Traefik: $traefik"
-echo "🔑 Senha do Traefik: ********"
-echo "🌐 Dominio do Portainer: $portainer"
-echo "🌐 Dominio do Edge: $edge"
-echo ""
+
 read -p "As informações estão certas? (y/n): " confirma1
 if [ "$confirma1" == "y" ]; then
-  clear
-  #########################################################
-  # INSTALANDO DEPENDENCIAS
-  #########################################################
-  sudo apt update -y && sudo apt upgrade -y
-  sudo apt install -y curl
-  curl -fsSL https://get.docker.com -o get-docker.sh
-  sudo sh get-docker.sh
-  mkdir -p ~/Portainer && cd ~/Portainer
-  echo -e "\e[32mAtualizado/Instalado com Sucesso\e[0m"
-  sleep 3
-  clear
-  #########################################################
-  # CRIANDO DOCKER-COMPOSE.YML
-  #########################################################
-  cat > docker-compose.yml <<EOL
+    clear
+    
+    # Verificar requisitos do sistema
+    check_system_requirements || exit 1
+    
+    echo -e "${BLUE}🚀 Iniciando instalação...${NC}"
+    
+    #########################################################
+    # INSTALANDO DEPENDENCIAS
+    #########################################################
+    echo -e "${YELLOW}📦 Atualizando sistema e instalando dependências...${NC}"
+    (sudo apt update -y && sudo apt upgrade -y) > /dev/null 2>&1 &
+    spinner $!
+    
+    echo -e "${YELLOW}🐳 Instalando Docker...${NC}"
+    (sudo apt install -y curl && \
+    curl -fsSL https://get.docker.com -o get-docker.sh && \
+    sudo sh get-docker.sh) > /dev/null 2>&1 &
+    spinner $!
+    
+    mkdir -p ~/Portainer && cd ~/Portainer
+    echo -e "${GREEN}✅ Dependências instaladas com sucesso${NC}"
+    sleep 2
+    clear
+
+    #########################################################
+    # CRIANDO DOCKER-COMPOSE.YML
+    #########################################################
+    cat > docker-compose.yml <<EOL
 services:
   traefik:
     container_name: traefik
@@ -123,31 +207,34 @@ services:
 volumes:
   portainer_data:
 EOL
-  #########################################################
-  # CERTIFICADOS LETSENCRYPT
-  #########################################################
-  echo -e "\e[32mInstalando certificado LetsEncrypt\e[0m"
-  touch acme.json
-  sudo chmod 600 acme.json
-  #########################################################
-  # INICIANDO CONTAINER
-  #########################################################
-  sudo docker compose up -d
-echo -e "\e[32m\e[0m"
-echo -e "\e[32m\e[0m"
-echo -e "\e[32m  _____        _____ _  __  _________     _______  ______ ____   ____ _______ \e[0m"
-echo -e "\e[32m |  __ \ /\   / ____| |/ / |__   __\ \   / /  __ \|  ____|  _ \ / __ \__   __|\e[0m"
-echo -e "\e[32m | |__) /  \ | |    | ' /     | |   \ \_/ /| |__) | |__  | |_) | |  | | | |   \e[0m"
-echo -e "\e[32m |  ___/ /\ \| |    |  <      | |    \   / |  ___/|  __| |  _ <| |  | | | |   \e[0m"
-echo -e "\e[32m | |  / ____ \ |____| . \     | |     | |  | |    | |____| |_) | |__| | | |   \e[0m"
-echo -e "\e[32m |_| /_/    \_\_____|_|\_\    |_|     |_|  |_|    |______|____/ \____/  |_|   \e[0m"
-echo -e "\e[32m\e[0m"
-echo -e "\e[32m\e[0m"
-echo -e "\e[32mAcesse o Portainer através do link: https://$portainer\e[0m"
-echo -e "\e[32mAcesse o Traefik através do link: https://$traefik\e[0m"
-echo -e "\e[32m\e[0m"
-echo -e "\e[32mhttps://packtypebot.com.br\e[0m"
+
+    #########################################################
+    # CERTIFICADOS LETSENCRYPT
+    #########################################################
+    echo -e "${YELLOW}📝 Gerando certificado LetsEncrypt...${NC}"
+    touch acme.json
+    sudo chmod 600 acme.json
+    
+    #########################################################
+    # INICIANDO CONTAINER
+    #########################################################
+    echo -e "${YELLOW}🚀 Iniciando containers...${NC}"
+    (sudo docker compose up -d) > /dev/null 2>&1 &
+    spinner $!
+    
+    clear
+    show_animated_logo
+    
+    echo -e "${GREEN}🎉 Instalação concluída com sucesso!${NC}"
+    echo -e "${BLUE}📝 Informações de Acesso:${NC}"
+    echo -e "${GREEN}================================${NC}"
+    echo -e "🔗 Portainer: ${YELLOW}https://$portainer${NC}"
+    echo -e "🔗 Traefik: ${YELLOW}https://$traefik${NC}"
+    echo -e "${GREEN}================================${NC}"
+    echo ""
+    echo -e "${BLUE}💡 Dica: Aguarde alguns minutos para que os certificados SSL sejam gerados${NC}"
+    echo -e "${GREEN}🌟 Visite: https://packtypebot.com.br${NC}"
 else
-  echo "Encerrando a instalação, por favor, inicie a instalação novamente."
-  exit 0
+    echo -e "${RED}❌ Instalação cancelada. Por favor, inicie novamente.${NC}"
+    exit 0
 fi
