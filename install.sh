@@ -26,9 +26,9 @@ spinner() {
 check_system_requirements() {
     echo -e "${BLUE}Verificando requisitos do sistema...${NC}"
     
-    # Verificar espaço em disco
-    local free_space=$(df -h / | awk 'NR==2 {print $4}' | sed 's/G//')
-    if (( $(echo "$free_space < 10" | bc -l) )); then
+    # Verificar espaço em disco (em GB, removendo a unidade 'G')
+    local free_space=$(df -BG / | awk 'NR==2 {print $4}' | tr -d 'G')
+    if [ "$free_space" -lt 10 ]; then
         echo -e "${RED}❌ Erro: Espaço em disco insuficiente. Mínimo requerido: 10GB${NC}"
         return 1
     fi
